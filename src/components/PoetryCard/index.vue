@@ -3,11 +3,11 @@
     <template #header>
       <div class="card-header">
         <span>{{ poetryItem.poemName }}</span>
-        <el-button class="button" text>进行操作</el-button>
+        <el-button class="button" text>简/繁</el-button>
       </div>
     </template>
     <div class="text">{{ poetryItem.content }}</div>
-    <template #footer>这是尾部</template>
+    <template #footer>{{ poetryItem.athology }}</template>
   </el-card>
 </template>
 
