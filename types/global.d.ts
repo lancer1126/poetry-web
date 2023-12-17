@@ -17,6 +17,14 @@ declare global {
     VITE_COMPRESSION: ViteCompression;
     [key: string]: number | string | boolean;
   }
+
+  interface Poetry {
+    eraName: string;
+    authorName: string;
+    poemName: string;
+    athology: string;
+    content: string;
+  }
 }
 
 export {}

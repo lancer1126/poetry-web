@@ -1,5 +1,14 @@
 import { defineConfig, loadEnv } from "vite";
-import { rootPath, pathResolve, wrapperEnv, setupPlugins } from "./build";
+import { resolve } from "path";
+import { wrapperEnv, setupPlugins } from "./build";
+
+/** 当前执行node命令时文件夹的地址（工作目录） */
+const rootPath = (): string => process.cwd();
+
+/** 路径查找 */
+const pathResolve = (dir: string): string => {
+  return resolve(__dirname, ".", dir);
+};
 
 export default defineConfig(configEnv => {
   const viteEnv = wrapperEnv(loadEnv(configEnv.mode, rootPath()));

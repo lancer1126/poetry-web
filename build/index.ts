@@ -1,5 +1,3 @@
-import { resolve } from "path";
-
 /** 处理环境变量 */
 const wrapperEnv = (envConf: Recordable): ViteEnv => {
   /** 此处为默认值 */
@@ -29,13 +27,5 @@ const wrapperEnv = (envConf: Recordable): ViteEnv => {
   return ret;
 };
 
-/** 当前执行node命令时文件夹的地址（工作目录） */
-const rootPath = (): string => process.cwd();
-
-/** 路径查找 */
-const pathResolve = (dir: string): string => {
-  return resolve(__dirname, ".", dir);
-};
-
-export { wrapperEnv, rootPath, pathResolve };
+export { wrapperEnv };
 export * from "./plugins";
