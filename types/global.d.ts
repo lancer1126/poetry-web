@@ -8,6 +8,8 @@ declare global {
     | "brotli-clear"
     | "both-clear";
 
+  type PoemCharType = "zh-simple" | "zh-trad";
+
   interface ViteEnv {
     VITE_PUBLIC_PATH: string;
     VITE_PORT: number;
@@ -22,8 +24,9 @@ declare global {
     eraName: string;
     authorName: string;
     poemName: string;
-    athology: string;
+    anthology: string;
     content: string;
+    charType: PoemCharType;
   }
 }
 
