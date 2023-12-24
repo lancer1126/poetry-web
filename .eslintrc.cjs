@@ -27,5 +27,6 @@ module.exports = {
     globals: {
         Poetry: "readonly",
         PoemCharType: "readonly",
+        ElMessage: "readonly"
     }
 }

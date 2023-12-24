@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from "vite";
 import { resolve } from "path";
 import { wrapperEnv, setupPlugins } from "./build";
 
+
 /** 当前执行node命令时文件夹的地址（工作目录） */
 const rootPath = (): string => process.cwd();
 
@@ -27,6 +28,13 @@ export default defineConfig(configEnv => {
       warmup: {
         // 预热文件以提前转换和缓存结果，降低启动期间的初始页面加载时长并防止转换瀑布
         clientFiles: ["./index.html", "./src/{views,components}/*"]
+      },
+      proxy: {
+        "/api": {
+          changeOrigin: true,
+          target: "http://localhost:9100",
+          rewrite: path => path.replace(new RegExp("^/api"), "")
+        }
       }
     },
     plugins: setupPlugins()

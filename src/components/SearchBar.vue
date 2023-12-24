@@ -13,6 +13,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import { getRecommend } from "@/api/poem";
 
 interface SearchItem {
   item: string;
@@ -48,6 +49,9 @@ const loadHistory = (): SearchItem[] => {
 
 const handleSelect = (si: SearchItem) => {
   console.log(si);
+  getRecommend().then(respData => {
+    console.log(respData.data);
+  });
 };
 
 onMounted(() => {
