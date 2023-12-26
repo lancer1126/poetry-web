@@ -6,3 +6,11 @@ export function getRecommend() {
     method: "get"
   });
 }
+
+export function search(searchBody: SearchBody) {
+  return request({
+    url: "api/poetry/search",
+    method: "post",
+    data: searchBody
+  });
+}

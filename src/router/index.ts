@@ -5,6 +5,11 @@ export const constantRoutes: RouteRecordRaw[] = [
     path: "/",
     name: "home",
     component: () => import("@/views/home/index.vue")
+  },
+  {
+    path: "/search",
+    name: "search",
+    component: () => import("@/views/search/index.vue")
   }
 ];
 

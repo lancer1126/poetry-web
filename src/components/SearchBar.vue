@@ -7,15 +7,16 @@
       clearable
       placeholder="搜索"
       @select="handleSelect"
+      @keydown.enter="handleEnter"
     />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { getRecommend } from "@/api/poem";
+import { useRouter } from "vue-router";
 
-interface SearchItem {
+interface HistoryItem {
   item: string;
   time: string;
 }
@@ -23,39 +24,50 @@ interface SearchItem {
 // 在下拉框要展示的内容的字段名，在SearchItem中是item字段
 const valueKey: string = "item";
 const searchState = ref("");
-const historyList = ref<SearchItem[]>([]);
+const historyList = ref<HistoryItem[]>([]);
+const router = useRouter();
 
 const matchHistory = (queryStr: string, cb: any) => {
   const matchItems = queryStr
     ? historyList.value.filter(filterHistory(queryStr))
     : historyList.value;
-  console.log(matchItems);
   cb(matchItems);
 };
 
 const filterHistory = (queryStr: string) => {
-  return (history: SearchItem) => {
+  return (history: HistoryItem) => {
     return history.item.toLowerCase().includes(queryStr.toLowerCase());
   };
 };
 
-const loadHistory = (): SearchItem[] => {
-  // 模拟数据
-  return [
-    { item: "记录1", time: "" },
-    { item: "记录2", time: "" }
+const loadHistory = () => {
+  historyList.value = [
+    { item: "李白", time: "" },
+    { item: "杜甫", time: "" }
   ];
 };
 
-const handleSelect = (si: SearchItem) => {
-  console.log(si);
-  getRecommend().then(respData => {
-    console.log(respData.data);
+const handleEnter = () => {
+  goSearch(searchState.value);
+};
+
+const handleSelect = (hi: HistoryItem) => {
+  goSearch(hi.item);
+};
+
+const goSearch = (word: string) => {
+  router.push({
+    path: "/search",
+    query: {
+      word: word,
+      index: 0,
+      size: 20
+    }
   });
 };
 
 onMounted(() => {
-  historyList.value = loadHistory();
+  loadHistory();
 });
 </script>
 

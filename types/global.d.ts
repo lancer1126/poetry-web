@@ -28,6 +28,19 @@ declare global {
     content: string;
     charType: PoemCharType;
   }
+
+  interface SearchBody {
+    word: string;
+    index: string;
+    size: string;
+  }
+
+  interface PageItem {
+    total: number;
+    offset: number;
+    size: number;
+    records: Array<PageItem>
+  }
 }
 
 export {}
