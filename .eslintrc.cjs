@@ -29,6 +29,7 @@ module.exports = {
         PoemCharType: "readonly",
         ElMessage: "readonly",
         SearchBody: "readonly",
-        PageItem: "readonly"
+        PageItem: "readonly",
+        CharContent: "readonly"
     }
 }

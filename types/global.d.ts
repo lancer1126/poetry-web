@@ -8,7 +8,7 @@ declare global {
     | "brotli-clear"
     | "both-clear";
 
-  type PoemCharType = "zh-simple" | "zh-trad";
+  type PoemCharType = "zh-simplified" | "zh-traditional";
 
   interface ViteEnv {
     VITE_PUBLIC_PATH: string;
@@ -20,13 +20,18 @@ declare global {
     [key: string]: number | string | boolean;
   }
 
+  interface CharContent {
+    body: string;
+    charType: PoemCharType;
+  }
+
   interface Poetry {
     eraName: string;
     authorName: string;
     poemName: string;
     anthology: string;
-    content: string;
-    charType: PoemCharType;
+    originCharType: PoemCharType;
+    contentWithChar: Array<CharContent>;
   }
 
   interface SearchBody {
@@ -39,7 +44,7 @@ declare global {
     total: number;
     offset: number;
     size: number;
-    records: Array<PageItem>
+    records: Array<Poetry>
   }
 }
 
