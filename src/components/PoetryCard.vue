@@ -64,11 +64,18 @@ onMounted(() => {
 }
 
 .text {
-  font-size: 15px;
+  font-size: 20px;
   white-space: pre-line;
 }
 
 .box-card {
   max-height: 500px;
+  font-weight: bold;
+  background-color: transparent;
+  background-color: rgba(175, 175, 165, 0.5);
+}
+
+.clickable {
+  cursor: pointer;
 }
 </style>
